@@ -5,6 +5,7 @@ import { FiSun } from 'react-icons/fi';
 import { BsMoonStars } from 'react-icons/bs';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
+import About from '../components/About';
 // import { Inter } from '@next/font/google';
 
 // const inter = Inter({ subsets: ['latin'] });
@@ -17,7 +18,7 @@ export default function Home() {
 		setTheme(theme === 'light' ? 'dark' : 'light');
 	};
 	return (
-		<div className="dark:bg-[rgb(36,36,36)] dark:text-white transition duration-1000 h-screen">
+		<div className="transition duration-1000 h-screen snap-y snap-proximity overflow-scroll z-0 dark:bg-[rgb(36,36,36)] dark:text-white">
 			<Head>
 				<title>Okafor JerryMark</title>
 				<meta name="description" content="Okafor JerryMark" />
@@ -25,40 +26,44 @@ export default function Home() {
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			<Header />
-			{/* Hero Section */}
-			<section>
+			<section id="hero" className="snap-start">
 				<Hero />
 			</section>
 			{/* About Section */}
+			<section id="about" className="snap-center">
+				<About />
+			</section>
 			{/* Experience */}
 			{/* Skills */}
 			{/* Projects */}
 			{/* Contact Me */}
 
 			{/* Floating button */}
-			<motion.div
-				initial={{
-					x: 700,
-					opacity: 0,
-					scale: 0.5,
-				}}
-				animate={{
-					x: 0,
-					opacity: 1,
-					scale: 1,
-				}}
-				transition={{
-					duration: 1.6,
-				}}
-				onClick={handleToggle}
-				className="fixed bottom-10 right-5  p-3 rounded-full flex items-center justify-center h-14 w-14 shadow-2xl cursor-pointer xl:right-10"
-			>
-				{theme === 'light' ? (
-					<BsMoonStars fontSize="1.7em" color="grey" />
-				) : (
-					<FiSun fontSize="1.7em" color="grey" />
-				)}
-			</motion.div>
+			<>
+				<motion.div
+					initial={{
+						x: 700,
+						opacity: 0,
+						scale: 0.5,
+					}}
+					animate={{
+						x: 0,
+						opacity: 1,
+						scale: 1,
+					}}
+					transition={{
+						duration: 1.6,
+					}}
+					onClick={handleToggle}
+					className="fixed bottom-10 right-5  p-3 rounded-full flex items-center justify-center h-14 w-14 shadow-2xl cursor-pointer xl:right-10"
+				>
+					{theme === 'light' ? (
+						<BsMoonStars fontSize="1.7em" color="grey" />
+					) : (
+						<FiSun fontSize="1.7em" color="grey" />
+					)}
+				</motion.div>
+			</>
 		</div>
 	);
 }
